@@ -1,0 +1,16 @@
+#include<wifi.h>
+const char* ssid = "user ssid";
+const char* password = "user password";
+void setup(){
+Serial.begin(115200);
+Wifi.begin(ssid , password);
+
+while(wifi.status() != WL_CONNECTED);{
+Serial.print(".");
+delay(500);
+}
+Serial.println("\n Connceted");
+Serial.println(Wifi.localIP());
+delay(200);
+}
+void loop(){}
