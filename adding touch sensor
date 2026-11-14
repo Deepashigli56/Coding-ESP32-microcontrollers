@@ -1,0 +1,16 @@
+const int touchpin = 4;
+const int led = 2;
+void setup(){
+Serial.begin(115200);
+pinMode(led ,OUTPUT);
+}
+void loop(){
+int value = touchRead(touchpin);
+Serial.println(value);
+
+if (value < 30){
+digitalWrite(led , high);
+else {digitalWrite(led , low)}
+delay(500);
+}
+}
