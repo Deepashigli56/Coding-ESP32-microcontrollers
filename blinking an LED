@@ -1,1 +1,14 @@
+const int light = 2;
+void setup(){
+Serial.begin(115200);
+pinMode(light,OUTPUT);
+}
+void loop(){
+digitalWrite(light,HIGH);
+Serial.println("LED On");
+delay(1000);
+digitalWrite(light,LOW);
+Serial.println("LED Off")
+delay(1000);
 
+}
