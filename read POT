@@ -1,0 +1,10 @@
+const int POT = 24;
+void setup(){
+  Serial.begin(115200);
+}
+void loop()
+{
+  int value = analogRead(POT);
+  Serial.println(value);
+  delay(200);
+}
