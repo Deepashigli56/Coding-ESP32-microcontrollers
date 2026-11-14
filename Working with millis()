@@ -1,0 +1,13 @@
+const int led = 2;
+unsigned long previous_time = 0;
+bool LedState = false;
+void setup(){
+pinMode(led ,OUTPUT)
+}
+void loop(){
+if(millis() -  previous_time >= 500);
+{previous_time = millis();
+LedState = !LedState;
+digitalWrite(Led , LedState);}
+
+}
