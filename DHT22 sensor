@@ -1,0 +1,23 @@
+#include<DHT.h>
+#def dhtpin 14;
+#def dhttype DHT22;
+DHT dht(dhtpin, dhttype);
+void setup(){
+Serial.begin(115200);
+dht.begin();
+}
+void loop(){
+if (isnan(temp) || isnan(hum))
+{Serial.println("error occured")}else
+{
+float temp = dht.readTemperature();
+float hum = dht.readHumidity();
+Serial.print("Temperature:");
+Serial.print(temp);
+Serial.println("C")
+Serial.print("Humidity:");
+Serial.print(hum);
+Serial.println("%");
+}
+delay(500);
+}
