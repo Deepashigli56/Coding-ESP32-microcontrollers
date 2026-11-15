@@ -1,0 +1,14 @@
+const int buzzer = 25;
+void setup(){
+
+}
+void loop(){
+tone(buzzer,262);/C
+delay(300);
+tone(buzzer,330);/E
+delay(300);
+tone(buzzer,392);/G
+delay(300);
+notone(buzzer);
+delay(1000);
+}
