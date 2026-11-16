@@ -1,0 +1,20 @@
+const int button = 4;
+const int led = 2;
+volatile bool pressed = false;
+void IRAM_ATTR buttonISR(){pressed = true;}
+void setup(){
+pressed = true;
+Serial.begin(115200);
+pinMode(button,INPUT_PULLUP);
+pinMode(led,OUTPUT);
+attachInterrupt(digitalPintoInterrupt(button),buttonISR(),FALLING);
+}
+void loop(){
+if(pressed)
+{pressed = false;
+}
+digitalWrite(led,!digitalRead(led));
+Serial.println("button pressed");
+delay(200);
+
+}
