@@ -1,0 +1,31 @@
+#include<Preferences.h>
+
+Preferences prefs;
+
+
+void setup(){
+Serial.begin(115200);
+prefs.begin("my data",false)
+int count = prefs.getInt("count",0);
+count++;
+prefs.putInt("count",count);
+Serial.println("The system has started");
+Serial.print(count);
+Serial.print("times");
+prefs.end();
+
+}
+void loop(){
+
+}
+
+
+/*Normal variables vanish when the power is cut. The ESP32’s flash memory can keep data even with no power, like a tiny hard drive for settings, scores, or Wi-Fi passwords.
+#include <Preferences.h> is built in, so there is nothing to install.
+Preferences prefs; creates the storage object.
+prefs.begin("mydata", false); opens a storage area called a namespace (the name is up to you, max 15 characters). false means read and write. true would mean read-only.
+prefs.getInt("count", 0) reads a saved number using the key "count". The second value (0) is the default, used the first time when nothing is saved yet.
+prefs.putInt("count", count) saves the number under that key.
+prefs.end() closes the storage when you’re done.
+Other types work the same way: putString / getString, putFloat / getFloat, putBool / getBool.
+Difference from Snippet 14: RTC_DATA_ATTR survives deep sleep but is lost when power is removed. Preferences survives power loss too.*/
