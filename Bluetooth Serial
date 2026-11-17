@@ -1,0 +1,26 @@
+#include<BluetoothSerial.h>
+
+BluetoothSerial SerialBT;
+const int led = 4;
+
+void setup(){
+Serial.begin(115200);
+pinMode(led,OUTPUT);
+SerialBT.begin("ESP32 Learner");
+Serial.println("Connect to ESP32 Learner");
+}
+void loop(){
+if SerialBT.available(){
+char c = SerialBT.read();
+}
+
+if(c == "1"){
+digitalWrite(led,HIGH);
+SerialBT.println("LED ON");
+}
+else if(c == "0"){
+digitalWrite(led,LOW);
+SerialBT.println("LED OFF");
+}
+delay(200);
+}
