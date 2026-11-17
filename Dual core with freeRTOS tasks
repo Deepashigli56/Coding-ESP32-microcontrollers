@@ -1,0 +1,20 @@
+const int led1 = 2;
+const int led2 = 4;
+
+void task1(void *parameter){
+while(true){
+digitalWrite(led1, !digitalRead(led1));
+VTaskDelay(500 / portTICK_period_MS);
+}}
+void task2(void *parameter){
+while(true){digitalWrite(led2, !digitalRead(led2));
+VTaskDelay(500 / portTICK_period_MS);
+}
+}
+void setup(){
+pinMode(led1 , OUTPUT);
+pinMode(led2 , OUTPUT);
+xTaskCreatePinnedToCore(task1,"blink1", 2048 , NULL ,1 ,NULL ,0);
+xTaskCreatePinnedToCore(task2, "blink2" , 2048 , NULL ,1 ,NULL ,1);
+}
+void loop(){}
