@@ -18,3 +18,16 @@ xTaskCreatePinnedToCore(task1,"blink1", 2048 , NULL ,1 ,NULL ,0);
 xTaskCreatePinnedToCore(task2, "blink2" , 2048 , NULL ,1 ,NULL ,1);
 }
 void loop(){}
+/* A task is just a function that never returns, so it must contain while (true).
+void *parameter is required in the task function signature, even if you don’t use it.
+vTaskDelay(ticks) is the task version of delay(). It pauses only this task, and other tasks keep running. 500 / portTICK_PERIOD_MS converts milliseconds into ticks.
+xTaskCreatePinnedToCore(function, name, stackSize, parameter, priority, handle, core) starts a task:
+function: the task to run (task1)
+name: a label for debugging ("Blink1")
+stackSize: memory for the task in bytes (2048 is fine for small tasks)
+parameter: data to pass in (NULL means none)
+priority: higher number = more important (1 is normal)
+handle: lets you control the task later (NULL means you don’t need it)
+core: 0 or 1
+NULL means “nothing”.
+loop() is empty here because the tasks do all the work. (Arduino’s own loop() is actually just another task running on core 1.) */
